@@ -1,0 +1,18 @@
+实训虚拟机配置：
+1.如果导入不兼容
+	需要修改hadoop配置文件将.vmx文件打开将VMware修改为自己安装的版本 
+	修改配置为linux CentOS64位
+2.用root密码登陆
+3. cd udev/rules.d/  删除 rm -f 70-persistent-net.rules  重启reboot
+4.vim 70-persistent-net.rules
+	修改 NAME="eth0"
+	复制 ATTR{address}=="00:0c:29:ad:08:93"
+5.修改IP vi /etc/sysconfig/network-scripts/ifcfg-eth0  
+	HWADDR=00:0c:29:ad:08:93
+6.重启网卡service network restart
+7.vi etc/hosts 修改映射
+
+8.修改本地映射C:\Windows\System32\drivers\etc\hosts
+
+9. cd /opt/app/
+10.测试dfs   start-yarn.sh sqoop
